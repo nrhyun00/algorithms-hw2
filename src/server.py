@@ -13,9 +13,10 @@ from urllib.parse import parse_qs
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from hash_table import HashTable, R, horner_steps  # noqa: E402
+from probing_table import LinearProbingTable  # noqa: E402
 from shortener import Shortener  # noqa: E402
 
-TABLES = [("chaining", HashTable)]
+TABLES = [("chaining", HashTable), ("probing", LinearProbingTable)]
 
 STYLE = """
 body { font-family: sans-serif; max-width: 960px; margin: 2rem auto; padding: 0 1rem; color: #111; }
@@ -77,7 +78,25 @@ def chaining_html(t, base):
     return "".join(parts)
 
 
+def probing_html(t, base):
+    m = t.capacity()
+    parts = []
+    for i, slot in enumerate(t.slots()):
+        if slot is None:
+            cell = "<span class='empty'>빈 칸</span>"
+        else:
+            key, code, home, looked = slot
+            moved = "처음 칸 그대로" if looked == 1 else f"{looked - 1}칸 밀려남"
+            extra = (f"<div><b>처음 칸</b> [{home}] → 여기까지 <b>{looked}칸을 봄</b>"
+                     f" ({moved})</div>")
+            cell = node_html(key, code, base, m, extra)
+        parts.append(f"<div class='slot'><span class='idx'>[{i}]</span>{cell}</div>")
+    return "".join(parts)
+
+
 def table_html(t, base):
+    if isinstance(t, LinearProbingTable):
+        return probing_html(t, base)
     return chaining_html(t, base)
 
 
@@ -137,6 +156,10 @@ class ShortenerHandler(BaseHTTPRequestHandler):
             msg = f"<p class='err'>{escape(str(e))}</p>"
             self.send_page(400, page("URL 단축기", form_html(msg)))
             return
+        except OverflowError as e:
+            msg = f"<p class='err'>{escape(str(e))} (선형 탐지 테이블을 늘리지 않게 띄운 경우)</p>"
+            self.send_page(507, page("URL 단축기", form_html(msg)))
+            return
         link = f"{self.base_url()}/{code}"
         body = (f"<p>원래 주소: {escape(self.shortener.expand(code))}</p>"
                 f"<p>짧은 링크: <a href='{escape(link)}'>{escape(link)}</a></p>"
@@ -147,7 +170,7 @@ class ShortenerHandler(BaseHTTPRequestHandler):
         sys.stderr.write("%s - %s\n" % (self.address_string(), fmt % args))
 
 
-def make_server(port=8000, table="chaining", host="0.0.0.0"):
+def make_server(port=8000, table="chaining", host="0.0.0.0", **table_options):
     table_cls = None
     for name, cls in TABLES:
         if name == table:
@@ -155,7 +178,8 @@ def make_server(port=8000, table="chaining", host="0.0.0.0"):
     if table_cls is None:
         raise ValueError(f"모르는 테이블: {table}")
     handler = type("Handler", (ShortenerHandler,),
-                   {"shortener": Shortener(table_cls=table_cls), "table_name": table})
+                   {"shortener": Shortener(table_cls=table_cls, **table_options),
+                    "table_name": table})
     return ThreadingHTTPServer((host, port), handler)
 
 
@@ -163,8 +187,15 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--port", type=int, default=8000)
     p.add_argument("--table", choices=[name for name, _ in TABLES], default="chaining")
+    p.add_argument("--capacity", type=int, help="처음 칸 수 M (예: 11)")
+    p.add_argument("--max-load", help="이 적재율을 넘으면 늘림. none이면 늘리지 않음")
     args = p.parse_args()
-    server = make_server(args.port, args.table)
+    options = {}
+    if args.capacity:
+        options["capacity"] = args.capacity
+    if args.max_load is not None:
+        options["max_load"] = None if args.max_load.lower() == "none" else float(args.max_load)
+    server = make_server(args.port, args.table, **options)
     print(f"http://localhost:{args.port} ({args.table})")
     try:
         server.serve_forever()

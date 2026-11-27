@@ -1,5 +1,6 @@
 """외부 라이브러리 없이 꺾은선 그래프를 SVG로 그린다."""
 
+import math
 from xml.sax.saxutils import escape
 
 COLORS = ["#2563eb", "#dc2626", "#059669", "#d97706", "#7c3aed", "#db2777"]
@@ -13,7 +14,11 @@ def line_chart(path, title, xlabel, ylabel, xs, series, ymax=None):
     xmin, xmax = 0, max(xs)
     if ymax is None:
         ymax = max(max(ys) for _, ys, _ in series)
-    ymax = ymax * 1.05
+    raw = ymax / 5
+    mag = 10 ** math.floor(math.log10(raw))
+    step = next(k * mag for k in (1, 2, 2.5, 5, 10) if k * mag >= raw)
+    ticks = math.ceil(ymax / step - 1e-9)
+    ymax = ticks * step
 
     def px(x):
         return left + (x - xmin) / (xmax - xmin) * pw
@@ -27,10 +32,10 @@ def line_chart(path, title, xlabel, ylabel, xs, series, ymax=None):
         f'<rect width="{W}" height="{H}" fill="white"/>',
         f'<text x="{left + pw / 2}" y="28" text-anchor="middle" font-size="16">{escape(title)}</text>',
     ]
-    for i in range(6):
-        y = ymax / 1.05 * i / 5
+    for i in range(ticks + 1):
+        y = step * i
         out.append(f'<line x1="{left}" y1="{py(y):.1f}" x2="{left + pw}" y2="{py(y):.1f}" stroke="#e5e7eb"/>')
-        out.append(f'<text x="{left - 8}" y="{py(y) + 4:.1f}" text-anchor="end">{y:.2f}</text>')
+        out.append(f'<text x="{left - 8}" y="{py(y) + 4:.1f}" text-anchor="end">{y:g}</text>')
     for x in xs:
         out.append(f'<text x="{px(x):.1f}" y="{top + ph + 18}" text-anchor="middle">{x:g}</text>')
     out.append(f'<line x1="{left}" y1="{top + ph}" x2="{left + pw}" y2="{top + ph}" stroke="black"/>')

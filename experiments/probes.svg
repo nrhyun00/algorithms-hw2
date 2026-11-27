@@ -2,17 +2,17 @@
 <rect width="720" height="440" fill="white"/>
 <text x="300.0" y="28" text-anchor="middle" font-size="16">개별 체이닝: 적재율과 비교한 노드 수 (M = 4093)</text>
 <line x1="70" y1="380.0" x2="530" y2="380.0" stroke="#e5e7eb"/>
-<text x="62" y="384.0" text-anchor="end">0.00</text>
-<line x1="70" y1="317.1" x2="530" y2="317.1" stroke="#e5e7eb"/>
-<text x="62" y="321.1" text-anchor="end">0.81</text>
-<line x1="70" y1="254.3" x2="530" y2="254.3" stroke="#e5e7eb"/>
-<text x="62" y="258.3" text-anchor="end">1.62</text>
-<line x1="70" y1="191.4" x2="530" y2="191.4" stroke="#e5e7eb"/>
-<text x="62" y="195.4" text-anchor="end">2.44</text>
-<line x1="70" y1="128.6" x2="530" y2="128.6" stroke="#e5e7eb"/>
-<text x="62" y="132.6" text-anchor="end">3.25</text>
-<line x1="70" y1="65.7" x2="530" y2="65.7" stroke="#e5e7eb"/>
-<text x="62" y="69.7" text-anchor="end">4.06</text>
+<text x="62" y="384.0" text-anchor="end">0</text>
+<line x1="70" y1="314.0" x2="530" y2="314.0" stroke="#e5e7eb"/>
+<text x="62" y="318.0" text-anchor="end">1</text>
+<line x1="70" y1="248.0" x2="530" y2="248.0" stroke="#e5e7eb"/>
+<text x="62" y="252.0" text-anchor="end">2</text>
+<line x1="70" y1="182.0" x2="530" y2="182.0" stroke="#e5e7eb"/>
+<text x="62" y="186.0" text-anchor="end">3</text>
+<line x1="70" y1="116.0" x2="530" y2="116.0" stroke="#e5e7eb"/>
+<text x="62" y="120.0" text-anchor="end">4</text>
+<line x1="70" y1="50.0" x2="530" y2="50.0" stroke="#e5e7eb"/>
+<text x="62" y="54.0" text-anchor="end">5</text>
 <text x="98.8" y="398" text-anchor="middle">0.25</text>
 <text x="127.5" y="398" text-anchor="middle">0.5</text>
 <text x="185.0" y="398" text-anchor="middle">1</text>
@@ -24,30 +24,30 @@
 <line x1="70" y1="50" x2="70" y2="380" stroke="black"/>
 <text x="300.0" y="425" text-anchor="middle">적재율 α</text>
 <text x="18" y="215.0" text-anchor="middle" transform="rotate(-90 18 215.0)">평균 비교 노드 수</text>
-<polyline points="98.8,291.6 127.5,283.2 185.0,263.7 242.5,244.9 300.0,226.3 415.0,187.5 530.0,147.3" fill="none" stroke="#2563eb" stroke-width="2"/>
-<circle cx="98.8" cy="291.6" r="3" fill="#2563eb"/>
-<circle cx="127.5" cy="283.2" r="3" fill="#2563eb"/>
-<circle cx="185.0" cy="263.7" r="3" fill="#2563eb"/>
-<circle cx="242.5" cy="244.9" r="3" fill="#2563eb"/>
-<circle cx="300.0" cy="226.3" r="3" fill="#2563eb"/>
-<circle cx="415.0" cy="187.5" r="3" fill="#2563eb"/>
-<circle cx="530.0" cy="147.3" r="3" fill="#2563eb"/>
+<polyline points="98.8,304.6 127.5,297.5 185.0,280.8 242.5,264.8 300.0,248.9 415.0,215.9 530.0,181.6" fill="none" stroke="#2563eb" stroke-width="2"/>
+<circle cx="98.8" cy="304.6" r="3" fill="#2563eb"/>
+<circle cx="127.5" cy="297.5" r="3" fill="#2563eb"/>
+<circle cx="185.0" cy="280.8" r="3" fill="#2563eb"/>
+<circle cx="242.5" cy="264.8" r="3" fill="#2563eb"/>
+<circle cx="300.0" cy="248.9" r="3" fill="#2563eb"/>
+<circle cx="415.0" cy="215.9" r="3" fill="#2563eb"/>
+<circle cx="530.0" cy="181.6" r="3" fill="#2563eb"/>
 <line x1="545" y1="60" x2="573" y2="60" stroke="#2563eb" stroke-width="2"/>
 <text x="579" y="64">성공 (측정)</text>
-<polyline points="98.8,292.9 127.5,283.3 185.0,263.9 242.5,244.5 300.0,225.2 415.0,186.5 530.0,147.8" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="6 4"/>
+<polyline points="98.8,305.8 127.5,297.5 185.0,281.0 242.5,264.5 300.0,248.0 415.0,215.0 530.0,182.0" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="6 4"/>
 <line x1="545" y1="82" x2="573" y2="82" stroke="#2563eb" stroke-width="2" stroke-dasharray="6 4"/>
 <text x="579" y="86">성공 (1 + α/2)</text>
-<polyline points="98.8,360.9 127.5,341.5 185.0,302.3 242.5,263.5 300.0,223.7 415.0,146.4 530.0,65.7" fill="none" stroke="#dc2626" stroke-width="2"/>
-<circle cx="98.8" cy="360.9" r="3" fill="#dc2626"/>
-<circle cx="127.5" cy="341.5" r="3" fill="#dc2626"/>
-<circle cx="185.0" cy="302.3" r="3" fill="#dc2626"/>
-<circle cx="242.5" cy="263.5" r="3" fill="#dc2626"/>
-<circle cx="300.0" cy="223.7" r="3" fill="#dc2626"/>
-<circle cx="415.0" cy="146.4" r="3" fill="#dc2626"/>
-<circle cx="530.0" cy="65.7" r="3" fill="#dc2626"/>
+<polyline points="98.8,363.7 127.5,347.1 185.0,313.8 242.5,280.6 300.0,246.7 415.0,180.8 530.0,112.0" fill="none" stroke="#dc2626" stroke-width="2"/>
+<circle cx="98.8" cy="363.7" r="3" fill="#dc2626"/>
+<circle cx="127.5" cy="347.1" r="3" fill="#dc2626"/>
+<circle cx="185.0" cy="313.8" r="3" fill="#dc2626"/>
+<circle cx="242.5" cy="280.6" r="3" fill="#dc2626"/>
+<circle cx="300.0" cy="246.7" r="3" fill="#dc2626"/>
+<circle cx="415.0" cy="180.8" r="3" fill="#dc2626"/>
+<circle cx="530.0" cy="112.0" r="3" fill="#dc2626"/>
 <line x1="545" y1="104" x2="573" y2="104" stroke="#dc2626" stroke-width="2"/>
 <text x="579" y="108">실패 (측정)</text>
-<polyline points="98.8,360.7 127.5,341.3 185.0,302.6 242.5,263.9 300.0,225.2 415.0,147.8 530.0,70.4" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4"/>
+<polyline points="98.8,363.5 127.5,347.0 185.0,314.0 242.5,281.0 300.0,248.0 415.0,182.0 530.0,116.0" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4"/>
 <line x1="545" y1="126" x2="573" y2="126" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4"/>
 <text x="579" y="130">실패 (α)</text>
 </svg>

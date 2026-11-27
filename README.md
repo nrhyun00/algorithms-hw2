@@ -50,3 +50,14 @@ docker compose exec lab bash
 ```
 
 **이후 모든 `docker compose` 명령은 이 폴더에서 칩니다.**
+
+## 과제: 선형 탐지와 비교 (#8)
+
+| 하고 싶은 것 | 명령 |
+| --- | --- |
+| 선형 탐지 테이블로 서버 띄우기 | `make serve TABLE=probing` |
+| 수업 예시처럼 M = 11로 고정 | `make serve TABLE=probing ARGS="--capacity 11 --max-load none"` |
+| 두 방식 비교 실험 | `make compare` → `experiments/compare.csv`, `compare-hit.svg`, `compare-miss.svg` |
+
+- 선형 탐지 구현: `src/probing_table.py` (`LinearProbingTable`, `HashTable`과 같은 인터페이스)
+- 같은 테스트를 두 방식에 돌린다: `tests/test_probing_table.py`, `tests/test_shortener_probing.py`, `tests/test_server_probing.py`
