@@ -57,11 +57,22 @@ class TestLinearProbingOnly(unittest.TestCase):
         self.assertIsNone(value)
         self.assertEqual(looked, m)
         self.assertNotIn("not-here", t)
-        with self.assertRaises(OverflowError):
-            t.put("one-more", 0)
         t.put("k3", 99)
         self.assertEqual(t.get("k3"), 99)
         self.assertEqual(len(t), m)
+        self.assertEqual(t.capacity(), m)
+
+    def test_full_table_grows_on_new_key(self):
+        m = 7
+        t = LinearProbingTable(capacity=m, max_load=None)
+        for i in range(m):
+            t.put(f"k{i}", i)
+        t.put("one-more", 0)
+        self.assertGreater(t.capacity(), m)
+        self.assertEqual(len(t), m + 1)
+        self.assertEqual(t.get("one-more"), 0)
+        for i in range(m):
+            self.assertEqual(t.get(f"k{i}"), i)
 
     def test_miss_counts_the_empty_slot(self):
         t = LinearProbingTable(capacity=11, max_load=None)

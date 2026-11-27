@@ -157,10 +157,6 @@ class ShortenerHandler(BaseHTTPRequestHandler):
             msg = f"<p class='err'>{escape(str(e))}</p>"
             self.send_page(400, page("URL 단축기", form_html(msg)))
             return
-        except OverflowError as e:
-            msg = f"<p class='err'>{escape(str(e))} (선형 탐지 테이블을 늘리지 않게 띄운 경우)</p>"
-            self.send_page(507, page("URL 단축기", form_html(msg)))
-            return
         link = f"{self.base_url()}/{code}"
         body = (f"<p>원래 주소: {escape(self.shortener.expand(code))}</p>"
                 f"<p>짧은 링크: <a href='{escape(link)}'>{escape(link)}</a></p>"

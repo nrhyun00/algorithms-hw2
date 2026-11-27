@@ -40,6 +40,23 @@ class ShortenerContract:
         codes = [s.shorten(f"https://example.com/{i}") for i in range(3)]
         self.assertEqual([decode(c) for c in codes], [1, 2, 3])
 
+    def test_failed_save_does_not_skip_a_number(self):
+        s = self.make()
+        s.shorten("https://example.com/1")
+        original = s._code_to_url.put
+
+        def broken(key, value):
+            raise MemoryError("저장 실패 흉내")
+
+        s._code_to_url.put = broken
+        with self.assertRaises(MemoryError):
+            s.shorten("https://example.com/2")
+        s._code_to_url.put = original
+        s._url_to_code = self.table_cls()
+        s._url_to_code.put("https://example.com/1", "1")
+        code = s.shorten("https://example.com/3")
+        self.assertEqual(decode(code), 2)
+
     def test_unknown_code(self):
         s = self.make()
         self.assertIsNone(s.expand("abc"))

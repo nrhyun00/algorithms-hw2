@@ -66,7 +66,9 @@ class LinearProbingTable:
     def put(self, key, value):
         i, _ = self._probe(key)
         if i is None:
-            raise OverflowError("테이블이 가득 찼습니다")
+            # 가득 찼고 같은 키도 없다: max_load와 상관없이 칸을 늘린 뒤 넣는다.
+            self._resize(2 * self._m + 1)
+            i, _ = self._probe(key)
         if self._slots[i] is not _EMPTY:
             self._slots[i].value = value
             return
