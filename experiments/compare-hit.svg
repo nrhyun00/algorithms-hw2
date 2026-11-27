@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" font-family="sans-serif" font-size="12">
 <rect width="720" height="440" fill="white"/>
-<text x="300.0" y="28" text-anchor="middle" font-size="16">성공 탐색 비용: 체이닝 vs 선형 탐지 (M = 4093)</text>
+<text x="300.0" y="28" text-anchor="middle" font-size="16">성공 탐색 비용: 체이닝 vs 선형 탐지 (M = 4093, 10회 평균)</text>
 <line x1="70" y1="380.0" x2="530" y2="380.0" stroke="#e5e7eb"/>
 <text x="62" y="384.0" text-anchor="end">0</text>
 <line x1="70" y1="270.0" x2="530" y2="270.0" stroke="#e5e7eb"/>
@@ -22,31 +22,31 @@
 <line x1="70" y1="50" x2="70" y2="380" stroke="black"/>
 <text x="300.0" y="425" text-anchor="middle">적재율 α</text>
 <text x="18" y="215.0" text-anchor="middle" transform="rotate(-90 18 215.0)">평균 탐색 비용 (노드 / 칸)</text>
-<polyline points="121.1,322.3 172.2,320.6 223.3,317.3 274.4,313.5 325.6,311.4 376.7,308.1 427.8,305.8 478.9,303.7 530.0,299.5" fill="none" stroke="#2563eb" stroke-width="2"/>
-<circle cx="121.1" cy="322.3" r="3" fill="#2563eb"/>
-<circle cx="172.2" cy="320.6" r="3" fill="#2563eb"/>
-<circle cx="223.3" cy="317.3" r="3" fill="#2563eb"/>
-<circle cx="274.4" cy="313.5" r="3" fill="#2563eb"/>
-<circle cx="325.6" cy="311.4" r="3" fill="#2563eb"/>
-<circle cx="376.7" cy="308.1" r="3" fill="#2563eb"/>
-<circle cx="427.8" cy="305.8" r="3" fill="#2563eb"/>
-<circle cx="478.9" cy="303.7" r="3" fill="#2563eb"/>
-<circle cx="530.0" cy="299.5" r="3" fill="#2563eb"/>
+<polyline points="121.1,322.4 172.2,319.2 223.3,316.5 274.4,314.0 325.6,311.2 376.7,308.5 427.8,305.9 478.9,303.3 530.0,300.4" fill="none" stroke="#2563eb" stroke-width="2"/>
+<circle cx="121.1" cy="322.4" r="3" fill="#2563eb"/>
+<circle cx="172.2" cy="319.2" r="3" fill="#2563eb"/>
+<circle cx="223.3" cy="316.5" r="3" fill="#2563eb"/>
+<circle cx="274.4" cy="314.0" r="3" fill="#2563eb"/>
+<circle cx="325.6" cy="311.2" r="3" fill="#2563eb"/>
+<circle cx="376.7" cy="308.5" r="3" fill="#2563eb"/>
+<circle cx="427.8" cy="305.9" r="3" fill="#2563eb"/>
+<circle cx="478.9" cy="303.3" r="3" fill="#2563eb"/>
+<circle cx="530.0" cy="300.4" r="3" fill="#2563eb"/>
 <line x1="545" y1="60" x2="573" y2="60" stroke="#2563eb" stroke-width="2"/>
 <text x="579" y="64">체이닝 (측정)</text>
 <polyline points="121.1,322.2 172.2,319.5 223.3,316.8 274.4,314.0 325.6,311.3 376.7,308.5 427.8,305.8 478.9,303.0 530.0,300.2" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="6 4"/>
 <line x1="545" y1="82" x2="573" y2="82" stroke="#2563eb" stroke-width="2" stroke-dasharray="6 4"/>
 <text x="579" y="86">체이닝 (이론)</text>
-<polyline points="121.1,322.2 172.2,318.8 223.3,314.6 274.4,306.7 325.6,297.7 376.7,283.2 427.8,267.0 478.9,228.6 530.0,120.2" fill="none" stroke="#dc2626" stroke-width="2"/>
-<circle cx="121.1" cy="322.2" r="3" fill="#dc2626"/>
-<circle cx="172.2" cy="318.8" r="3" fill="#dc2626"/>
-<circle cx="223.3" cy="314.6" r="3" fill="#dc2626"/>
-<circle cx="274.4" cy="306.7" r="3" fill="#dc2626"/>
-<circle cx="325.6" cy="297.7" r="3" fill="#dc2626"/>
-<circle cx="376.7" cy="283.2" r="3" fill="#dc2626"/>
-<circle cx="427.8" cy="267.0" r="3" fill="#dc2626"/>
-<circle cx="478.9" cy="228.6" r="3" fill="#dc2626"/>
-<circle cx="530.0" cy="120.2" r="3" fill="#dc2626"/>
+<polyline points="121.1,322.1 172.2,317.8 223.3,312.7 274.4,306.4 325.6,297.2 376.7,282.8 427.8,259.3 478.9,213.0 530.0,91.3" fill="none" stroke="#dc2626" stroke-width="2"/>
+<circle cx="121.1" cy="322.1" r="3" fill="#dc2626"/>
+<circle cx="172.2" cy="317.8" r="3" fill="#dc2626"/>
+<circle cx="223.3" cy="312.7" r="3" fill="#dc2626"/>
+<circle cx="274.4" cy="306.4" r="3" fill="#dc2626"/>
+<circle cx="325.6" cy="297.2" r="3" fill="#dc2626"/>
+<circle cx="376.7" cy="282.8" r="3" fill="#dc2626"/>
+<circle cx="427.8" cy="259.3" r="3" fill="#dc2626"/>
+<circle cx="478.9" cy="213.0" r="3" fill="#dc2626"/>
+<circle cx="530.0" cy="91.3" r="3" fill="#dc2626"/>
 <line x1="545" y1="104" x2="573" y2="104" stroke="#dc2626" stroke-width="2"/>
 <text x="579" y="108">선형 탐지 (측정)</text>
 <polyline points="121.1,321.9 172.2,318.1 223.3,313.2 274.4,306.7 325.6,297.5 376.7,283.7 427.8,260.8 478.9,215.1 530.0,77.3" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4"/>
