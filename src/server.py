@@ -136,7 +136,8 @@ class ShortenerHandler(BaseHTTPRequestHandler):
         else:
             url = self.shortener.expand(path[1:])
             if url is None:
-                self.send_page(404, page("없는 링크", "<p class='err'>그런 짧은 링크가 없습니다.</p>"))
+                self.send_page(404, page("없는 링크", "<p class='err'>그런 짧은 링크가 없습니다.</p>"
+                                                  "<p><a href='/'>처음 화면으로 가서 줄이기</a></p>"))
             else:
                 self.send_response(302)
                 self.send_header("Location", url)

@@ -72,6 +72,22 @@ class ShortenerContract:
                 s.shorten(url)
         self.assertEqual(len(s), 0)
 
+    def test_length_limit_is_500(self):
+        s = self.make()
+        self.assertEqual(MAX_URL_LENGTH, 500)
+        base = "https://example.com/"
+        ok = base + "a" * (500 - len(base))
+        self.assertEqual(s.expand(s.shorten(ok)), ok)
+        with self.assertRaises(ValueError):
+            s.shorten(ok + "a")
+
+    def test_trailing_slash_is_a_different_url(self):
+        s = self.make()
+        a = s.shorten("https://naver.com")
+        b = s.shorten("https://naver.com/")
+        self.assertNotEqual(a, b)
+        self.assertEqual(s.expand(b), "https://naver.com/")
+
     def test_many_urls(self):
         s = self.make()
         codes = [s.shorten(f"https://example.com/page/{i}") for i in range(1000)]
