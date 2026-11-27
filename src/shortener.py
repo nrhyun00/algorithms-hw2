@@ -53,9 +53,9 @@ class Shortener:
         if code is not None:
             return code
         code = encode(self._next)
-        self._next += 1
         self._url_to_code.put(url, code)
         self._code_to_url.put(code, url)
+        self._next += 1
         return code
 
     def expand(self, code):
