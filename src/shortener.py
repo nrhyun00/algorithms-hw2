@@ -3,7 +3,7 @@
 from base62 import encode
 from hash_table import HashTable
 
-MAX_URL_LENGTH = 2048
+MAX_URL_LENGTH = 500
 
 
 def validate(url):

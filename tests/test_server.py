@@ -54,8 +54,9 @@ class ServerContract:
         self.assertEqual(resp.status, 400)
 
     def test_unknown_code(self):
-        resp, _ = self.request("GET", "/zzz")
+        resp, body = self.request("GET", "/zzz")
         self.assertEqual(resp.status, 404)
+        self.assertIn("href='/'", body)
 
     def test_forwarded_host(self):
         resp, body = self.shorten("https://example.com/a",
