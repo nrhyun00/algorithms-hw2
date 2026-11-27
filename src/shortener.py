@@ -32,10 +32,10 @@ def validate(url):
 
 
 class Shortener:
-    def __init__(self, table_cls=HashTable):
+    def __init__(self, table_cls=HashTable, **table_options):
         self.table_cls = table_cls
-        self._url_to_code = table_cls()
-        self._code_to_url = table_cls()
+        self._url_to_code = table_cls(**table_options)
+        self._code_to_url = table_cls(**table_options)
         self._next = 1
 
     def __len__(self):
